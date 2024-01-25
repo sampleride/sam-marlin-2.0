@@ -164,10 +164,10 @@
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-//#define I_DRIVER_TYPE  A4988
-//#define J_DRIVER_TYPE  A4988
+#define I_DRIVER_TYPE  A4988  // A motor
+#define J_DRIVER_TYPE  A4988  // B motor
 //#define K_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE TMC2209
+//#define E0_DRIVER_TYPE TMC2209
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -204,7 +204,7 @@
 
 // This defines the number of extruders
 // :[0, 1, 2, 3, 4, 5, 6, 7, 8]
-#define EXTRUDERS 1
+#define EXTRUDERS 0
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -982,8 +982,8 @@
 //#define USE_XMAX_PLUG
 #define USE_YMAX_PLUG
 //#define USE_ZMAX_PLUG
-//#define USE_IMAX_PLUG
-//#define USE_JMAX_PLUG
+#define USE_IMAX_PLUG  // A motor max position
+#define USE_JMAX_PLUG  // B motor max position
 //#define USE_KMAX_PLUG
 
 // Enable pullup for all endstops to prevent a floating state
@@ -1085,14 +1085,15 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 410, 405, 400, 405 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 410 /* X */, 405 /* Y */, 400 /* Z */, 100 /* I */, 100 /* J */ }
+// TODO set Z and AB units
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 5, 5, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 5 /* X */, 5 /* Y */, 5 /* Z */, 2 /* I */, 2 /* J */ }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1111,9 +1112,10 @@
  * Sam configuration
  */
 #define SAM_XY_ACCEL 10
-#define SAM_Z_ACCEL 10
+#define SAM_Z_ACCEL 5
+#define SAM_AB_ACCEL 1
 
-#define DEFAULT_MAX_ACCELERATION      { SAM_XY_ACCEL, SAM_XY_ACCEL, SAM_Z_ACCEL, SAM_XY_ACCEL }
+#define DEFAULT_MAX_ACCELERATION      { SAM_XY_ACCEL, SAM_XY_ACCEL, SAM_Z_ACCEL, SAM_AB_ACCEL, SAM_AB_ACCEL }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1510,9 +1512,9 @@
 #define X_ENABLE_ON 0
 #define Y_ENABLE_ON 0
 #define Z_ENABLE_ON 0
-#define E_ENABLE_ON 0 // For all extruders
-//#define I_ENABLE_ON 0
-//#define J_ENABLE_ON 0
+//#define E_ENABLE_ON 0 // For all extruders
+#define I_ENABLE_ON 0
+#define J_ENABLE_ON 0
 //#define K_ENABLE_ON 0
 
 // Disable axis steppers immediately when they're not being stepped.
@@ -1538,8 +1540,9 @@
 #define INVERT_X_DIR true
 #define INVERT_Y_DIR true
 #define INVERT_Z_DIR false
-//#define INVERT_I_DIR false
-//#define INVERT_J_DIR false
+// TODO check AB and Z motor dir
+#define INVERT_I_DIR false
+#define INVERT_J_DIR false
 //#define INVERT_K_DIR false
 
 // @section extruder
@@ -1576,15 +1579,15 @@
 #define X_HOME_DIR -1
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
-//#define I_HOME_DIR -1
-//#define J_HOME_DIR -1
+#define I_HOME_DIR 1  // TODO double check this for AB and Z
+#define J_HOME_DIR 1
 //#define K_HOME_DIR -1
 
 // @section machine
 
 // The size of the printable area
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
+#define X_BED_SIZE 510
+#define Y_BED_SIZE 510
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1592,11 +1595,11 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 200
-//#define I_MIN_POS 0
-//#define I_MAX_POS 50
-//#define J_MIN_POS 0
-//#define J_MAX_POS 50
+#define Z_MAX_POS 30  // TODO set Z limits
+#define I_MIN_POS 0
+#define I_MAX_POS 5  // TODO set AB limits
+#define J_MIN_POS 0
+#define J_MAX_POS 5 // ditto
 //#define K_MIN_POS 0
 //#define K_MAX_POS 50
 
@@ -1959,7 +1962,8 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
+// TODO change homing speed for AB motors
+#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60), (1*60), (1*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS

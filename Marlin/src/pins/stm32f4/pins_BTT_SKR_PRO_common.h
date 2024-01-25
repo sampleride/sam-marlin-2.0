@@ -63,9 +63,12 @@
 #define X_DIAG_PIN                          PB10  // X-
 #define Y_DIAG_PIN                          PE12  // Y-
 #define Z_DIAG_PIN                          PG8   // Z-
-#define E0_DIAG_PIN                         PE15  // E0
-#define E1_DIAG_PIN                         PE10  // E1
-#define E2_DIAG_PIN                         PG5   // E2
+//#define E0_DIAG_PIN                         PE15  // E0
+//#define E1_DIAG_PIN                         PE10  // E1
+//#define E2_DIAG_PIN                         PG5   // E2
+#define I_DIAG_PIN                          PE15  // A
+#define Y2_DIAG_PIN                         PE10  // Y2
+#define J_DIAG_PIN                          PG5   // B
 
 //
 // Limit Switches
@@ -105,6 +108,11 @@
   #define Z_MIN_PIN                         PG8   // Z-
   #define Z_MAX_PIN                         PG5   // E2
 #endif
+
+// By default, AB motors endstops are always at MAX
+
+#define I_MAX_PIN                           PE15  // E0
+#define J_MAX_PIN                           PG5   // E2
 
 //
 // Z Probe must be this pin
@@ -150,12 +158,12 @@
   #define Z_CS_PIN                          PB9
 #endif
 
-#define E0_STEP_PIN                         PE14
-#define E0_DIR_PIN                          PA0
-#define E0_ENABLE_PIN                       PC3
-#ifndef E0_CS_PIN
-  #define E0_CS_PIN                         PB3
-#endif
+//#define E0_STEP_PIN                         PE14
+//#define E0_DIR_PIN                          PA0
+//#define E0_ENABLE_PIN                       PC3
+//#ifndef E0_CS_PIN
+//  #define E0_CS_PIN                         PB3
+//#endif
 
 //#define E1_STEP_PIN                         PD15
 //#define E1_DIR_PIN                          PE7
@@ -171,11 +179,27 @@
   #define Y2_CS_PIN                         PG15
 #endif
 
-#define E2_STEP_PIN                         PD13
-#define E2_DIR_PIN                          PG9
-#define E2_ENABLE_PIN                       PF0
-#ifndef E2_CS_PIN
-  #define E2_CS_PIN                         PG12
+//#define E2_STEP_PIN                         PD13
+//#define E2_DIR_PIN                          PG9
+//#define E2_ENABLE_PIN                       PF0
+//#ifndef E2_CS_PIN
+//  #define E2_CS_PIN                         PG12
+//#endif
+
+// AB motors
+
+#define I_STEP_PIN                         PE14
+#define I_DIR_PIN                          PA0
+#define I_ENABLE_PIN                       PC3
+#ifndef I_CS_PIN
+  #define I_CS_PIN                         PB3
+#endif
+
+#define J_STEP_PIN                         PD13
+#define J_DIR_PIN                          PG9
+#define J_ENABLE_PIN                       PF0
+#ifndef J_CS_PIN
+  #define J_CS_PIN                         PG12
 #endif
 
 //
