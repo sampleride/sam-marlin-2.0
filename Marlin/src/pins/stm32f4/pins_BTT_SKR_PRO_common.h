@@ -82,7 +82,7 @@
   #endif
 #else
   #define X_MIN_PIN                         PB10  // X-
-  #define X_MAX_PIN                         PE15  // E0
+  //#define X_MAX_PIN                         PE15  // E0
 #endif
 
 #ifdef Y_STALL_SENSITIVITY
@@ -106,7 +106,7 @@
   #endif
 #else
   #define Z_MIN_PIN                         PG8   // Z-
-  #define Z_MAX_PIN                         PG5   // E2
+  //#define Z_MAX_PIN                         PG5   // E2
 #endif
 
 // By default, AB motors endstops are always at MAX
@@ -245,14 +245,23 @@
   #define Z_SERIAL_TX_PIN                   PE1
   #define Z_SERIAL_RX_PIN        Z_SERIAL_TX_PIN
 
-  #define E0_SERIAL_TX_PIN                  PD4
-  #define E0_SERIAL_RX_PIN      E0_SERIAL_TX_PIN
+//  #define E0_SERIAL_TX_PIN                  PD4
+//  #define E0_SERIAL_RX_PIN      E0_SERIAL_TX_PIN
+//
+//  #define E1_SERIAL_TX_PIN                  PD1
+//  #define E1_SERIAL_RX_PIN      E1_SERIAL_TX_PIN
+//
+//  #define E2_SERIAL_TX_PIN                  PD6
+//  #define E2_SERIAL_RX_PIN      E2_SERIAL_TX_PIN
 
-  #define E1_SERIAL_TX_PIN                  PD1
-  #define E1_SERIAL_RX_PIN      E1_SERIAL_TX_PIN
+  #define I_SERIAL_TX_PIN                  PD4
+  #define I_SERIAL_RX_PIN      I_SERIAL_TX_PIN
 
-  #define E2_SERIAL_TX_PIN                  PD6
-  #define E2_SERIAL_RX_PIN      E2_SERIAL_TX_PIN
+  #define Y2_SERIAL_TX_PIN                  PD1
+  #define Y2_SERIAL_RX_PIN      Y2_SERIAL_TX_PIN
+
+  #define J_SERIAL_TX_PIN                  PD6
+  #define J_SERIAL_RX_PIN      J_SERIAL_TX_PIN
 
   // Reduce baud rate to improve software serial reliability
   #define TMC_BAUD_RATE                    19200

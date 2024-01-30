@@ -164,8 +164,8 @@
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-#define I_DRIVER_TYPE  A4988  // A motor
-#define J_DRIVER_TYPE  A4988  // B motor
+#define I_DRIVER_TYPE  TMC2209  // A motor
+#define J_DRIVER_TYPE  TMC2209  // B motor
 //#define K_DRIVER_TYPE  A4988
 //#define E0_DRIVER_TYPE TMC2209
 //#define E1_DRIVER_TYPE A4988
@@ -1085,7 +1085,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 410 /* X */, 405 /* Y */, 400 /* Z */, 100 /* I */, 100 /* J */ }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 410 /* X */, 405 /* Y */, 400 /* Z */, 400 /* I */, 400 /* J */ }
 // TODO set Z and AB units
 
 /**
@@ -1113,7 +1113,7 @@
  */
 #define SAM_XY_ACCEL 10
 #define SAM_Z_ACCEL 5
-#define SAM_AB_ACCEL 1
+#define SAM_AB_ACCEL 5
 
 #define DEFAULT_MAX_ACCELERATION      { SAM_XY_ACCEL, SAM_XY_ACCEL, SAM_Z_ACCEL, SAM_AB_ACCEL, SAM_AB_ACCEL }
 
@@ -1198,7 +1198,7 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
 //#define USE_PROBE_FOR_Z_HOMING
@@ -1522,8 +1522,8 @@
 #define DISABLE_X false
 #define DISABLE_Y false
 #define DISABLE_Z false
-//#define DISABLE_I false
-//#define DISABLE_J false
+#define DISABLE_I false
+#define DISABLE_J false
 //#define DISABLE_K false
 
 // Turn off the display blinking that warns about possible accuracy reduction
@@ -1597,9 +1597,9 @@
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 30  // TODO set Z limits
 #define I_MIN_POS 0
-#define I_MAX_POS 5  // TODO set AB limits
+#define I_MAX_POS 20  // TODO set AB limits
 #define J_MIN_POS 0
-#define J_MAX_POS 5 // ditto
+#define J_MAX_POS 20 // ditto
 //#define K_MIN_POS 0
 //#define K_MAX_POS 50
 
@@ -2040,7 +2040,7 @@
  *   M501 - Read settings from EEPROM. (i.e., Throw away unsaved changes)
  *   M502 - Revert settings to "factory" defaults. (Follow with M500 to init the EEPROM.)
  */
-#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
+//#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
 //#define DISABLE_M503        // Saves ~2700 bytes of flash. Disable for release!
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
