@@ -1085,8 +1085,7 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 410 /* X */, 405 /* Y */, 400 /* Z */, 400 /* I */, 400 /* J */ }
-// TODO set Z and AB units
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 410 /* X */, 405 /* Y */, 200 /* Z */, 71.4 /* I */, 71.4 /* J */ }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1540,7 +1539,6 @@
 #define INVERT_X_DIR true
 #define INVERT_Y_DIR true
 #define INVERT_Z_DIR false
-// TODO check AB and Z motor dir
 #define INVERT_I_DIR false
 #define INVERT_J_DIR false
 //#define INVERT_K_DIR false
@@ -1579,7 +1577,7 @@
 #define X_HOME_DIR -1
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
-#define I_HOME_DIR 1  // TODO double check this for AB and Z
+#define I_HOME_DIR 1
 #define J_HOME_DIR 1
 //#define K_HOME_DIR -1
 
@@ -1595,11 +1593,11 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 30  // TODO set Z limits
+#define Z_MAX_POS 50  // TODO set Z limits
 #define I_MIN_POS 0
-#define I_MAX_POS 20  // TODO set AB limits
+#define I_MAX_POS 70 // A motor
 #define J_MIN_POS 0
-#define J_MAX_POS 20 // ditto
+#define J_MAX_POS 70 // B motor
 //#define K_MIN_POS 0
 //#define K_MAX_POS 50
 
